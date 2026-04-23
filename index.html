@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unakoti Heritage Site | The Lost Hill of Faces | Tripura, India</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'stone-ancient': '#8B7355',
+                        'forest-deep': '#1B4D3E',
+                        'forest-light': '#2D6A4F',
+                        'earth-dark': '#3E2723',
+                        'earth-light': '#5D4037',
+                        'saffron': '#FF9933',
+                        'cream': '#FFF8E7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://kimi-web-img.moonshot.cn/img/images.moneycontrol.com/658afdeeaec889cdde2428af422abd76d5870ab4.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .text-shadow { text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+        .card-hover { transition: all 0.4s ease; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .gallery-img { transition: transform 0.5s ease; }
+        .gallery-item:hover .gallery-img { transform: scale(1.1); }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #FF9933, #1B4D3E);
+        }
+        @media (max-width: 768px) {
+            .timeline-line { left: 20px; }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            background: rgba(27, 77, 62, 0.9);
+        }
+        .shiva-face-mask {
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="font-inter bg-cream text-gray-800 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur text-white transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-saffron rounded-full flex items-center justify-center">
+                        <i class="fas fa-om text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-cinzel text-xl font-bold tracking-wider">UNAKOTI</h1>
+                        <p class="text-xs text-gray-300 tracking-widest">HERITAGE SITE</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="hover:text-saffron transition-colors duration-300 text-sm font-medium uppercase tracking-wider">Home</a>
+                    <a href="#legend" class="hover:text-saffron transition-colors duration-300 text-sm font-medium uppercase tracking-wider">Legend</a>
+                    <a href="#sculptures" class="hover:text-saffron transition-colors duration-300 text-sm font-medium uppercase tracking-wider">Sculptures</a>
+                    <a href="#history" class="hover:text-saffron transition-colors duration-300 text-sm font-medium uppercase tracking-wider">History</a>
+                    <a href="#gallery" class="hover:text-saffron transition-colors duration-300 text-sm font-medium uppercase tracking-wider">Gallery</a>
+                    <a href="#visit" class="bg-saffron hover:bg-orange-600 text-white px-6 py-2 rounded-full transition-all duration-300 text-sm font-semibold uppercase tracking-wider">Plan Visit</a>
+                </div>
+                <button class="md:hidden text-white text-2xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-forest-deep border-t border-forest-light">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-2 text-white hover:text-saffron">Home</a>
+                <a href="#legend" class="block px-3 py-2 text-white hover:text-saffron">Legend</a>
+                <a href="#sculptures" class="block px-3 py-2 text-white hover:text-saffron">Sculptures</a>
+                <a href="#history" class="block px-3 py-2 text-white hover:text-saffron">History</a>
+                <a href="#gallery" class="block px-3 py-2 text-white hover:text-saffron">Gallery</a>
+                <a href="#visit" class="block px-3 py-2 text-saffron font-semibold">Plan Your Visit</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cream"></div>
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto fade-in">
+            <div class="mb-6 inline-block">
+                <span class="bg-saffron/20 text-saffron border border-saffron/50 px-4 py-1 rounded-full text-sm font-semibold tracking-widest uppercase backdrop-blur-sm">
+                    UNESCO Tentative World Heritage Site
+                </span>
+            </div>
+            <h1 class="font-cinzel text-5xl md:text-7xl lg:text-8xl font-bold text-white text-shadow mb-6 leading-tight">
+                UNAKOTI
+            </h1>
+            <h2 class="font-playfair text-2xl md:text-4xl text-gray-200 italic mb-8 text-shadow">
+                "One Less Than a Crore"
+            </h2>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed text-shadow">
+                Discover the mysterious rock-cut sculptures of the 7th–9th century CE, hidden in the lush Raghunandan Hills of Tripura. Home to the colossal 30-foot Unakotiswara Kal Bhairava.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#sculptures" class="bg-saffron hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Explore Sculptures
+                </a>
+                <a href="#legend" class="border-2 border-white text-white hover:bg-white hover:text-forest-deep px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 backdrop-blur-sm">
+                    Read the Legend
+                </a>
+            </div>
+            <div class="mt-16 flex justify-center space-x-12 text-white/80">
+                <div class="text-center">
+                    <div class="text-3xl font-cinzel font-bold">30ft</div>
+                    <div class="text-sm uppercase tracking-wider mt-1">Shiva Head</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-cinzel font-bold">7-9th</div>
+                    <div class="text-sm uppercase tracking-wider mt-1">Century CE</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-cinzel font-bold">178km</div>
+                    <div class="text-sm uppercase tracking-wider mt-1">From Agartala</div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#legend" class="text-white/70 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Introduction / Legend Section -->
+    <section id="legend" class="py-20 md:py-32 bg-cream relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-forest-deep/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="h-px w-12 bg-saffron"></div>
+                        <span class="text-saffron font-semibold uppercase tracking-widest text-sm">The Sacred Legend</span>
+                    </div>
+                    <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-earth-dark mb-8 leading-tight">
+                        The Curse of Lord Shiva
+                    </h2>
+                    <div class="space-y-6 text-gray-700 text-lg leading-relaxed font-playfair">
+                        <p>
+                            According to ancient Hindu scriptures, Lord Shiva once spent a night here en route to Kashi (Varanasi), accompanied by <strong>99,99,999 gods and goddesses</strong> — one less than a crore (Unakoti).
+                        </p>
+                        <p>
+                            He instructed his divine entourage to wake before sunrise and continue their journey. When dawn broke, only Shiva had risen. Enraged by their slumber, he cursed them all to turn into stone, leaving the site with <em>one less than a crore</em> deities frozen in time.
+                        </p>
+                        <p class="border-l-4 border-saffron pl-6 italic text-earth-light">
+                            "Another legend speaks of Kallu Kumhar, a devoted sculptor who promised to carve one crore idols in a single night to earn passage to Mount Kailash with Shiva and Parvati. As the sun rose, he fell short by one — giving Unakoti its eternal name."
+                        </p>
+                    </div>
+                    <div class="mt-8 flex items-center space-x-4">
+                        <div class="flex -space-x-2">
+                            <div class="w-10 h-10 rounded-full bg-forest-deep flex items-center justify-center text-white text-xs font-bold">S</div>
+                            <div class="w-10 h-10 rounded-full bg-saffron flex items-center justify-center text-white text-xs font-bold">P</div>
+                            <div class="w-10 h-10 rounded-full bg-earth-light flex items-center justify-center text-white text-xs font-bold">G</div>
+                        </div>
+                        <p class="text-sm text-gray-600">Depicting Shiva, Parvati & Ganesha</p>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://kimi-web-img.moonshot.cn/img/assets.cntraveller.in/e5ad72f1ff9050e6864264653e91f7f150cb9ba3.jpg" 
+                             alt="Unakoti Shiva Face Close-up" 
+                             class="w-full h-[600px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <p class="text-white font-cinzel text-xl font-bold">Unakotiswara Kal Bhairava</p>
+                            <p class="text-gray-300 text-sm mt-1">The 30-foot central rock-cut sculpture</p>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-saffron/10 rounded-full z-[-1]"></div>
+                    <div class="absolute -top-6 -left-6 w-24 h-24 border-2 border-forest-deep/20 rounded-full z-[-1]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Sculptures Section -->
+    <section id="sculptures" class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-saffron font-semibold uppercase tracking-widest text-sm">Iconography</span>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-earth-dark mt-4 mb-6">The Magnificent Sculptures</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+                    The images at Unakoti are classified into two categories: majestic rock-cut images on vertical surfaces and loose stone sculptures scattered across the hill.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Sculpture 1 -->
+                <div class="card-hover bg-cream rounded-2xl overflow-hidden shadow-lg fade-in">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.moneycontrol.com/6a1b7d266e8ac7b1d7b6036a5199f9b2105f197e.jpg" 
+                             alt="Unakotiswara Kal Bhairava" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-saffron text-white text-xs font-bold px-3 py-1 rounded-full">30 FEET</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-cinzel text-2xl font-bold text-earth-dark mb-3">Unakotiswara Kal Bhairava</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            The central and most conspicuous figure. This colossal rock-cut Shiva head stands 30 feet high including an embroidered head-dress of 10 feet. Features a vertical third eye, tribal-influenced headgear, and massive circular earrings.
+                        </p>
+                        <div class="flex items-center text-sm text-forest-deep font-semibold">
+                            <i class="fas fa-mountain mr-2"></i>
+                            <span>West-facing Bas-relief</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sculpture 2 -->
+                <div class="card-hover bg-cream rounded-2xl overflow-hidden shadow-lg fade-in" style="transition-delay: 100ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.moneycontrol.com/27aff7734e4a3eaeefe7bdf59b8ee62c830c775e.jpg" 
+                             alt="Gangadhara Shiva" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-forest-deep text-white text-xs font-bold px-3 py-1 rounded-full">ROCK CUT</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-cinzel text-2xl font-bold text-earth-dark mb-3">Gangadhara Shiva</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Located at the right side of the approach-way, this image shows Shiva with Ganga flowing from his matted locks (jatabharas). Features rope-like hair design, tiara ornament, and two circular kundalas adorning the ears.
+                        </p>
+                        <div class="flex items-center text-sm text-forest-deep font-semibold">
+                            <i class="fas fa-water mr-2"></i>
+                            <span>Depicting Ganga Descent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sculpture 3 -->
+                <div class="card-hover bg-cream rounded-2xl overflow-hidden shadow-lg fade-in" style="transition-delay: 200ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://kimi-web-img.moonshot.cn/img/images.moneycontrol.com/684b1b0dbbbfa71c912e938d89aa05017b92e3e6.jpg" 
+                             alt="Ganesha and other deities" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-earth-light text-white text-xs font-bold px-3 py-1 rounded-full">22 FEET</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-cinzel text-2xl font-bold text-earth-dark mb-3">Colossal Ganesha Panel</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            A group of three Ganesha images of unusual characteristics. The seated Ganesha stands 7 meters (22 feet) high with a distended abdomen. The standing figures show Tantric Buddhist influence with attenuated waists and multiple arms.
+                        </p>
+                        <div class="flex items-center text-sm text-forest-deep font-semibold">
+                            <i class="fas fa-paw mr-2"></i>
+                            <span>Three Deities Group</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Icons Grid -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 fade-in">
+                <div class="bg-stone-100 p-6 rounded-xl text-center hover:bg-stone-200 transition-colors cursor-pointer">
+                    <div class="w-16 h-16 mx-auto bg-forest-deep/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-female text-2xl text-forest-deep"></i>
+                    </div>
+                    <h4 class="font-cinzel font-bold text-earth-dark">Goddess Durga</h4>
+                    <p class="text-xs text-gray-600 mt-2">Standing on a lion beside Shiva's head-dress</p>
+                </div>
+                <div class="bg-stone-100 p-6 rounded-xl text-center hover:bg-stone-200 transition-colors cursor-pointer">
+                    <div class="w-16 h-16 mx-auto bg-saffron/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-horse-head text-2xl text-saffron"></i>
+                    </div>
+                    <h4 class="font-cinzel font-bold text-earth-dark">Nandi Bulls</h4>
+                    <p class="text-xs text-gray-600 mt-2">Three enormous images half-buried in ground</p>
+                </div>
+                <div class="bg-stone-100 p-6 rounded-xl text-center hover:bg-stone-200 transition-colors cursor-pointer">
+                    <div class="w-16 h-16 mx-auto bg-forest-deep/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-fire text-2xl text-forest-deep"></i>
+                    </div>
+                    <h4 class="font-cinzel font-bold text-earth-dark">Kamadahana</h4>
+                    <p class="text-xs text-gray-600 mt-2">Shiva incinerating Kama, god of love</p>
+                </div>
+                <div class="bg-stone-100 p-6 rounded-xl text-center hover:bg-stone-200 transition-colors cursor-pointer">
+                    <div class="w-16 h-16 mx-auto bg-earth-light/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-om text-2xl text-earth-light"></i>
+                    </div>
+                    <h4 class="font-cinzel font-bold text-earth-dark">Chaturmukhalinga</h4>
+                    <p class="text-xs text-gray-600 mt-2">Four-faced Shiva linga with inscriptions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Timeline Section -->
+    <section id="history" class="py-20 md:py-32 bg-earth-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-saffron font-semibold uppercase tracking-widest text-sm">Timeline</span>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold mt-4 mb-6">Journey Through Time</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    From the Pre-Manikya period to modern UNESCO recognition, trace the legacy of this sacred Shaivite pilgrimage site.
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="timeline-line"></div>
+                
+                <!-- Timeline Item 1 -->
+                <div class="relative mb-12 md:mb-0 md:h-48 fade-in">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right pr-8">
+                            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                                <h3 class="font-cinzel text-xl font-bold text-saffron mb-2">7th – 9th Century CE</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Rock carvings created during Pre-Manikya rule. Patronized by the Deva Dynasty of Sribhumi in Samatata region. The site emerges as a major Shaivite Tirtha.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-saffron rounded-full border-4 border-earth-dark z-10 flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-5/12 md:pl-8 mt-4 md:mt-0 ml-12 md:ml-0">
+                            <span class="text-4xl font-cinzel font-bold text-white/20">01</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative mb-12 md:mb-0 md:h-48 fade-in">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right pr-8 md:order-1 order-2">
+                            <span class="text-4xl font-cinzel font-bold text-white/20">02</span>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-forest-light rounded-full border-4 border-earth-dark z-10 flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-5/12 md:pl-8 md:order-2 order-1 ml-12 md:ml-0">
+                            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                                <h3 class="font-cinzel text-xl font-bold text-saffron mb-2">11th – 12th Century CE</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Earliest literary references by A.K. Chaudhuri (1910-11) and Captain Williams (1914). Inscription on Chaturmukhalinga mentions pilgrim Sri Jayadeva. Pala empire influence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative mb-12 md:mb-0 md:h-48 fade-in">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right pr-8">
+                            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                                <h3 class="font-cinzel text-xl font-bold text-saffron mb-2">1921 – 1922</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Archaeological Survey of India publishes authoritative account in Annual Report. Site formally documented and recognized for its exceptional rock-art heritage value.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-saffron rounded-full border-4 border-earth-dark z-10 flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-5/12 md:pl-8 mt-4 md:mt-0 ml-12 md:ml-0">
+                            <span class="text-4xl font-cinzel font-bold text-white/20">03</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="relative fade-in">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right pr-8 md:order-1 order-2">
+                            <span class="text-4xl font-cinzel font-bold text-white/20">04</span>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-forest-light rounded-full border-4 border-earth-dark z-10 flex items-center justify-center">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-5/12 md:pl-8 md:order-2 order-1 ml-12 md:ml-0">
+                            <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                                <h3 class="font-cinzel text-xl font-bold text-saffron mb-2">December 2022</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    Added to UNESCO World Heritage Site Tentative List. Government grants ₹12 crore for development. Modern conservation and tourism infrastructure initiated.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 md:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-saffron font-semibold uppercase tracking-widest text-sm">Visual Journey</span>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-earth-dark mt-4 mb-6">The Lost Hill of Faces</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Camouflaged by the dense forests of Jampui Hills, these bas-relief sculptures are the largest in India.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]">
+                <div class="gallery-item relative overflow-hidden rounded-xl row-span-2 cursor-pointer group" onclick="openLightbox(0)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/s7ap1.scene7.com/12638363e15925fbb4afd1a2d23c4ff08fd10339" 
+                         alt="Unakoti Rock Wall Overview" 
+                         class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-6">
+                        <div class="translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-cinzel font-bold text-lg">The Rock Wall</h4>
+                            <p class="text-gray-300 text-sm">West-facing bas-reliefs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-xl cursor-pointer group" onclick="openLightbox(1)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/inditales.com/5c9909a26bb2cd467f656c98b32e45f4db3e5176.jpg" 
+                         alt="Kotishwara Kala Bhairava" 
+                         class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-6">
+                        <div class="translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-cinzel font-bold">Kotishwara</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-xl cursor-pointer group" onclick="openLightbox(2)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/db847ee57b7fc42b88d7e042af488ae9f0eb6ba7.jpg" 
+                         alt="Staircase and sculptures" 
+                         class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-6">
+                        <div class="translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-cinzel font-bold">Sacred Stairs</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-xl col-span-2 cursor-pointer group" onclick="openLightbox(3)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.assettype.com/31f93a1de8f8190ce7c91a1091ff158ea63a8678.jpg" 
+                         alt="Unakoti panoramic view" 
+                         class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-6">
+                        <div class="translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-cinzel font-bold text-lg">Panoramic View</h4>
+                            <p class="text-gray-300 text-sm">The Lost Hill of Faces</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-xl row-span-2 cursor-pointer group" onclick="openLightbox(4)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.moneycontrol.com/658afdeeaec889cdde2428af422abd76d5870ab4.jpg" 
+                         alt="Unakoti landscape with waterfall" 
+                         class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-6">
+                        <div class="translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-cinzel font-bold text-lg">Sacred Landscape</h4>
+                            <p class="text-gray-300 text-sm">Waterfalls and kundas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-xl cursor-pointer group" onclick="openLightbox(5)">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.indianexpress.com/62c27a808fb15310282ce0a089446fb4147fd0e9.jpg" 
+                         alt="Multiple deities" 
+                         class="gallery-img w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-6">
+                        <div class="translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-white font-cinzel font-bold">Divine Assembly</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Festival & Culture -->
+    <section class="py-20 md:py-32 bg-forest-deep text-white relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <span class="text-saffron font-semibold uppercase tracking-widest text-sm">Living Heritage</span>
+                    <h2 class="font-cinzel text-4xl md:text-5xl font-bold mt-4 mb-8">Ashokastami Mela</h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Every year during the Chaitra month (April-May), thousands of pilgrims converge at Unakoti for the grand <strong>Ashokastami Mela</strong>. Devotees carry holy water from distant rivers to perform Abhishek on the Shiva sculptures.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                        On Shravan Mondays, the site transforms into a living Tirtha as young men and women undertake Kanwar Yatra, pouring sacred water on the ancient lingas and whispering wishes into the ears of Nandi.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
+                            <div class="text-saffron text-2xl font-cinzel font-bold mb-1">April</div>
+                            <div class="text-sm text-gray-300">Ashokastami Mela</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
+                            <div class="text-saffron text-2xl font-cinzel font-bold mb-1">January</div>
+                            <div class="text-sm text-gray-300">Makar Sankranti</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-4 mt-8">
+                            <div class="bg-saffron/20 p-6 rounded-xl backdrop-blur-sm border border-saffron/30">
+                                <i class="fas fa-water text-3xl text-saffron mb-3"></i>
+                                <h4 class="font-cinzel font-bold mb-2">Abhishek</h4>
+                                <p class="text-sm text-gray-300">Holy water offering to Shiva</p>
+                            </div>
+                            <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/20">
+                                <i class="fas fa-pray text-3xl text-white mb-3"></i>
+                                <h4 class="font-cinzel font-bold mb-2">Puja</h4>
+                                <p class="text-sm text-gray-300">Ritual worship ceremonies</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/20">
+                                <i class="fas fa-fire-alt text-3xl text-orange-400 mb-3"></i>
+                                <h4 class="font-cinzel font-bold mb-2">Havan</h4>
+                                <p class="text-sm text-gray-300">Sacred fire rituals</p>
+                            </div>
+                            <div class="bg-forest-light/30 p-6 rounded-xl backdrop-blur-sm border border-forest-light/50">
+                                <i class="fas fa-music text-3xl text-green-300 mb-3"></i>
+                                <h4 class="font-cinzel font-bold mb-2">Bhajan</h4>
+                                <p class="text-sm text-gray-300">Devotional singing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit / Practical Info -->
+    <section id="visit" class="py-20 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-saffron font-semibold uppercase tracking-widest text-sm">Travel Guide</span>
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold text-earth-dark mt-4 mb-6">Plan Your Pilgrimage</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- How to Reach -->
+                <div class="bg-cream p-8 rounded-2xl shadow-lg fade-in">
+                    <div class="w-14 h-14 bg-forest-deep rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-route text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-cinzel text-2xl font-bold text-earth-dark mb-4">How to Reach</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-plane text-saffron mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-800">By Air</p>
+                                <p class="text-sm text-gray-600">Agartala Airport (178 km). Taxi/bus available to Kailashahar.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-train text-saffron mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-800">By Train</p>
+                                <p class="text-sm text-gray-600">Kumarghat (26 km) or Dharmanagar (19.6 km) railway stations.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-bus text-saffron mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-800">By Road</p>
+                                <p class="text-sm text-gray-600">8 km from Kailashahar, 22 km from Dharmanagar. Buses and autos ply regularly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Best Time -->
+                <div class="bg-cream p-8 rounded-2xl shadow-lg fade-in" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-saffron rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-calendar-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-cinzel text-2xl font-bold text-earth-dark mb-4">Best Time to Visit</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <span class="font-medium text-gray-700">October - March</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Ideal</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <span class="font-medium text-gray-700">April (Ashokastami)</span>
+                            <span class="text-xs bg-saffron/20 text-orange-800 px-2 py-1 rounded-full">Festival</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <span class="font-medium text-gray-700">July - September</span>
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">Monsoon</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4 italic">Budget 3-4 hours for the complete site visit. Wear comfortable shoes and carry water.</p>
+                </div>
+
+                <!-- Stay & Food -->
+                <div class="bg-cream p-8 rounded-2xl shadow-lg fade-in" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-earth-light rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bed text-2xl text-white"></i>
+                    </div>
+                    <h3 class="font-cinzel text-2xl font-bold text-earth-dark mb-4">Stay & Facilities</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-hotel text-earth-light mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-800">Accommodation</p>
+                                <p class="text-sm text-gray-600">Stay at Kailashahar or Dharmanagar (30-40 min drive). Limited guest houses near site.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-utensils text-earth-light mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-800">Food</p>
+                                <p class="text-sm text-gray-600">Local eateries available outside the main gate. Try famous Queen Pineapple of Tripura.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-info-circle text-earth-light mt-1"></i>
+                            <div>
+                                <p class="font-semibold text-gray-800">Entry</p>
+                                <p class="text-sm text-gray-600">Security gate at entrance. ASI protected site. No guides currently available.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Placeholder / Location -->
+            <div class="bg-earth-dark rounded-2xl overflow-hidden shadow-2xl fade-in">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-10 md:p-16 flex flex-col justify-center">
+                        <h3 class="font-cinzel text-3xl font-bold text-white mb-6">Location</h3>
+                        <div class="space-y-4 text-gray-300">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-saffron"></i>
+                                <span>Unakoti, Dharmanagar-Kailashahar Road</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-globe-asia text-saffron"></i>
+                                <span>Uttar Unakuti R.F., Tripura 799254</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-compass text-saffron"></i>
+                                <span>24°19′N 92°4′E (Raghunandan Hills)</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 p-4 bg-white/10 rounded-lg border border-white/20">
+                            <p class="text-sm text-gray-300">
+                                <i class="fas fa-exclamation-triangle text-saffron mr-2"></i>
+                                Also known as <strong>Subrai Khung</strong> in local Kokborok language.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-forest-light/20 min-h-[300px] flex items-center justify-center relative">
+                        <div class="text-center p-8">
+                            <i class="fas fa-map-marked-alt text-6xl text-saffron/30 mb-4"></i>
+                            <p class="text-white/60 text-sm">Interactive Map Integration</p>
+                            <p class="text-white/40 text-xs mt-2">Coordinates: 24.317°N 92.067°E</p>
+                            <a href="https://www.google.com/maps/search/Unakoti+Tripura" target="_blank" 
+                               class="inline-block mt-4 bg-saffron hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors">
+                                Open in Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-earth-dark text-white py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-saffron rounded-full flex items-center justify-center">
+                            <i class="fas fa-om text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-cinzel text-xl font-bold tracking-wider">UNAKOTI</h3>
+                            <p class="text-xs text-gray-400 tracking-widest">HERITAGE SITE</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed max-w-md">
+                        A sacred Shaivite pilgrimage site dating back to the 7th–9th century CE, featuring India's largest bas-relief rock sculptures. Now on UNESCO's tentative World Heritage list.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-cinzel font-bold text-lg mb-6 text-saffron">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#legend" class="hover:text-white transition-colors">The Legend</a></li>
+                        <li><a href="#sculptures" class="hover:text-white transition-colors">Sculptures</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#visit" class="hover:text-white transition-colors">Plan Visit</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-cinzel font-bold text-lg mb-6 text-saffron">Important</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><i class="fas fa-shield-alt mr-2 text-xs"></i> ASI Protected Site</li>
+                        <li><i class="fas fa-university mr-2 text-xs"></i> Govt. of Tripura</li>
+                        <li><i class="fas fa-globe mr-2 text-xs"></i> UNESCO Tentative List</li>
+                        <li><i class="fas fa-phone mr-2 text-xs"></i> Tourist Helpline</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">
+                     Unakoti Heritage Site. All rights reserved. Dedicated to the preservation of India's cultural heritage.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-saffron transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-saffron transition-colors"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-saffron transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-saffron transition-colors"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden flex items-center justify-center p-4">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/70 hover:text-white text-4xl z-10">
+            <i class="fas fa-times"></i>
+        </button>
+        <button onclick="changeImage(-1)" class="absolute left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-4xl z-10 p-4">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button onclick="changeImage(1)" class="absolute right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-4xl z-10 p-4">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="max-w-5xl max-h-[85vh]">
+            <img id="lightbox-img" src="" alt="Gallery Image" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+            <p id="lightbox-caption" class="text-center text-white/80 mt-4 font-cinzel text-lg"></p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Intersection Observer for Fade-in Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Lightbox Functionality
+        const galleryImages = [
+            { src: 'https://kimi-web-img.moonshot.cn/img/s7ap1.scene7.com/12638363e15925fbb4afd1a2d23c4ff08fd10339', caption: 'The Rock Wall - West-facing bas-reliefs' },
+            { src: 'https://kimi-web-img.moonshot.cn/img/inditales.com/5c9909a26bb2cd467f656c98b32e45f4db3e5176.jpg', caption: 'Kotishwara Kala Bhairava - The central Shiva head' },
+            { src: 'https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/db847ee57b7fc42b88d7e042af488ae9f0eb6ba7.jpg', caption: 'Sacred Stairs leading to the sculptures' },
+            { src: 'https://kimi-web-img.moonshot.cn/img/media.assettype.com/31f93a1de8f8190ce7c91a1091ff158ea63a8678.jpg', caption: 'Panoramic view of the Lost Hill of Faces' },
+            { src: 'https://kimi-web-img.moonshot.cn/img/images.moneycontrol.com/658afdeeaec889cdde2428af422abd76d5870ab4.jpg', caption: 'Sacred Landscape with waterfalls and kundas' },
+            { src: 'https://kimi-web-img.moonshot.cn/img/images.indianexpress.com/62c27a808fb15310282ce0a089446fb4147fd0e9.jpg', caption: 'Divine Assembly of multiple deities' }
+        ];
+
+        let currentImageIndex = 0;
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+            if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+            updateLightbox();
+        }
+
+        function updateLightbox() {
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            img.src = galleryImages[currentImageIndex].src;
+            caption.textContent = galleryImages[currentImageIndex].caption;
+        }
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
